@@ -1,22 +1,21 @@
-.pipeline-list-view .panel-group .panel-default {
-  border-color: transparent;
+.pipeline-panel {
+  padding: 0;
 }
-.pipeline-list-view .panel-group .panel-default .panel-body {
-  padding: 0px;
+.pipeline-panel .row,
+.pipeline-panel .col-md-12 {
+  margin: 0;
+  padding: 0;
 }
-.pipeline-list-view .panel-group .panel-default .panel-body .col-md-12 {
-  padding: 0px;
-}
-.pipeline-list-view .build-links .line-spacer {
+.pipeline-panel .build-links .line-spacer {
   margin-left: 1.5em;
   margin-right: 1.5em;
   color: #c5c5c5;
 }
-.pipeline-list-view .build-links a {
+.pipeline-panel .build-links a {
   font-size: smaller;
   color: #656565;
 }
-.pipeline-list-view .build-links a i {
+.pipeline-panel .build-links a i {
   color: #75c2df;
 }
 .pipeline-pod-counts {
@@ -40,11 +39,7 @@
   padding-top: 0;
 }
 .pipeline-panel .log-section {
-  padding-left: 0;
-  padding-right: 0;
-}
-.pipeline-panel .log-section .log-link {
-  margin-top: 7px;
+  padding: 0 10px;
 }
 .pipeline-view .pipeline-build-block {
   background-color: #eeeeee;
