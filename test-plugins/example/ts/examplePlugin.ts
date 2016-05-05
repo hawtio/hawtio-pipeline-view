@@ -19,6 +19,7 @@ module PipelineExample {
     };
     var logLink = 'http://myjenkins/logs/blah';
     var builds = [];
+    var startTime = Date.now() / 100000000 * -1;
     // failed build
     builds.push({
       displayName: "#1",
@@ -26,21 +27,21 @@ module PipelineExample {
       number: 1,
       building: false,
       $logLink: logLink,
-      $timestamp: new Date().getTime(),
+      $timestamp: startTime,
       result: 'FAILED',
       stages: [
         {
           stageName: 'foo',
           status: 'SUCCESS',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 20000,
+          $startTime: startTime,
           $logLink: logLink
         },
         {
           stageName: 'bar',
           status: 'FAILED',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 3000,
+          $startTime: startTime,
           $logLink: logLink
         }
       ]
@@ -54,20 +55,20 @@ module PipelineExample {
       building: false,
       result: 'SUCCESS',
       $logLink: logLink,
-      $timestamp: new Date().getTime(),
+      $timestamp: startTime + 4000,
       stages: [
         {
           stageName: 'foo',
           status: 'SUCCESS',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 20000,
+          $startTime: startTime + 4000,
           $logLink: logLink
         },
         {
           stageName: 'bar',
           status: 'SUCCESS',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 30000,
+          $startTime: startTime + 4000,
           $logLink: logLink
         }
       ]
@@ -80,20 +81,20 @@ module PipelineExample {
       number: 3,
       building: true,
       $logLink: logLink,
-      $timestamp: new Date().getTime(),
+      $timestamp: startTime + 1000,
       stages: [
         {
           stageName: 'foo',
           status: 'SUCCESS',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 20000,
+          $startTime: startTime + 1000,
           $logLink: logLink
         },
         {
           stageName: 'bar',
           status: 'RUNNING',
-          duration: 300,
-          $startTime: new Date().getTime(),
+          duration: 15000,
+          $startTime: startTime + 1000,
           $logLink: logLink
         }
       ]

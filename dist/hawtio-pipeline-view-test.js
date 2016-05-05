@@ -19,6 +19,7 @@ var PipelineExample;
             };
             var logLink = 'http://myjenkins/logs/blah';
             var builds = [];
+            var startTime = Date.now() / 100000000 * -1;
             // failed build
             builds.push({
                 displayName: "#1",
@@ -26,21 +27,21 @@ var PipelineExample;
                 number: 1,
                 building: false,
                 $logLink: logLink,
-                $timestamp: new Date().getTime(),
+                $timestamp: startTime,
                 result: 'FAILED',
                 stages: [
                     {
                         stageName: 'foo',
                         status: 'SUCCESS',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 20000,
+                        $startTime: startTime,
                         $logLink: logLink
                     },
                     {
                         stageName: 'bar',
                         status: 'FAILED',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 3000,
+                        $startTime: startTime,
                         $logLink: logLink
                     }
                 ]
@@ -53,20 +54,20 @@ var PipelineExample;
                 building: false,
                 result: 'SUCCESS',
                 $logLink: logLink,
-                $timestamp: new Date().getTime(),
+                $timestamp: startTime + 4000,
                 stages: [
                     {
                         stageName: 'foo',
                         status: 'SUCCESS',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 20000,
+                        $startTime: startTime + 4000,
                         $logLink: logLink
                     },
                     {
                         stageName: 'bar',
                         status: 'SUCCESS',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 30000,
+                        $startTime: startTime + 4000,
                         $logLink: logLink
                     }
                 ]
@@ -78,20 +79,20 @@ var PipelineExample;
                 number: 3,
                 building: true,
                 $logLink: logLink,
-                $timestamp: new Date().getTime(),
+                $timestamp: startTime + 1000,
                 stages: [
                     {
                         stageName: 'foo',
                         status: 'SUCCESS',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 20000,
+                        $startTime: startTime + 1000,
                         $logLink: logLink
                     },
                     {
                         stageName: 'bar',
                         status: 'RUNNING',
-                        duration: 300,
-                        $startTime: new Date().getTime(),
+                        duration: 15000,
+                        $startTime: startTime + 1000,
                         $logLink: logLink
                     }
                 ]
@@ -114,4 +115,4 @@ var PipelineExample;
     hawtioPluginLoader.addModule(pluginName);
 })(PipelineExample || (PipelineExample = {}));
 
-angular.module("hawtio-pipeline-view-test-templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("test-plugins/example/html/examplePlugin.html","<div class=\"container-fluid\" ng-controller=\"PipelineExample.Controller\">\n\n  <style>\n  .inline-block {\n    display: inline-block;\n  }\n  </style>\n\n  <div ng-repeat=\"build in builds\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <hawtio-pipeline-view></hawtio-pipeline-view>\n      </div>\n    </div>\n  </div>\n\n</div>\n");}]); hawtioPluginLoader.addModule("hawtio-pipeline-view-test-templates");
+angular.module("hawtio-pipeline-view-test-templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("test-plugins/example/html/examplePlugin.html","<div class=\"container-fluid\" ng-controller=\"PipelineExample.Controller\">\r\n\r\n  <style>\r\n  .inline-block {\r\n    display: inline-block;\r\n  }\r\n  </style>\r\n\r\n  <div ng-repeat=\"build in builds\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <hawtio-pipeline-view></hawtio-pipeline-view>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n");}]); hawtioPluginLoader.addModule("hawtio-pipeline-view-test-templates");
