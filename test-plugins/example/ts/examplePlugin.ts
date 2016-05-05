@@ -12,7 +12,7 @@ module PipelineExample {
     });
   }]);
 
-  _module.controller('PipelineExample.Controller', ['$scope', ($scope) => {
+  _module.controller('PipelineExample.Controller', ['$scope', '$timeout', ($scope, $timeout) => {
     $scope.model = {
       // can filter the stages via this guy
       filterText: ''
@@ -112,9 +112,8 @@ module PipelineExample {
       });
     });
 
-    setTimeout(() => {
+    $timeout(() => {
       $scope.builds = builds;
-      Core.$apply($scope);
     }, 10);
 
   }]);

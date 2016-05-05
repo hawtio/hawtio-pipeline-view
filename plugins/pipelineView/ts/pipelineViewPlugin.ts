@@ -1,5 +1,8 @@
 /// <reference path="../../includes.ts"/>
 
+declare var humanizeDuration: any;
+declare var humandate: any;
+
 module HawtioPipelineView {
 
   var pluginName = 'hawtio-pipeline-view';
@@ -48,7 +51,7 @@ module HawtioPipelineView {
   _module.directive("hawtioPipelineView", () => {
     return {
       restrict: 'EA',
-      templateUrl: UrlHelpers.join(templatePath, 'pipelineView.html'),
+      templateUrl: 'plugins/pipelineView/html/pipelineView.html',
       controller: ['$scope', '$element', '$attrs', ($scope, $element, $attrs) => {
         // http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
         function componentToHex(c) {
@@ -91,6 +94,14 @@ module HawtioPipelineView {
         }
 
       }]
+    };
+  }).filter('relativeTime', () => {
+    return function(date) {
+      return humandate.relativeTime(date);
+    };
+  }).filter('humanizeDuration', () => {
+    return function (duration) {
+      return humanizeDuration(duration, { round: true });
     };
   });
 }

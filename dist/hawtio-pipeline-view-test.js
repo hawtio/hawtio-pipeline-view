@@ -12,7 +12,7 @@ var PipelineExample;
                 templateUrl: 'test-plugins/example/html/examplePlugin.html'
             });
         }]);
-    _module.controller('PipelineExample.Controller', ['$scope', function ($scope) {
+    _module.controller('PipelineExample.Controller', ['$scope', '$timeout', function ($scope, $timeout) {
             $scope.model = {
                 // can filter the stages via this guy
                 filterText: ''
@@ -107,9 +107,8 @@ var PipelineExample;
                     stage.$backgroundClass = HawtioPipelineView.createBuildStatusBackgroundClass(stage.status);
                 });
             });
-            setTimeout(function () {
+            $timeout(function () {
                 $scope.builds = builds;
-                Core.$apply($scope);
             }, 10);
         }]);
     hawtioPluginLoader.addModule(pluginName);
