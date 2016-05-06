@@ -1,8 +1,7 @@
-.pipeline-panel {
-  padding: 0;
+.inline-block {
+  display: inline-block;
 }
-.pipeline-panel .row,
-.pipeline-panel .col-md-12 {
+.pipeline-panel {
   margin: 0;
   padding: 0;
 }
@@ -65,8 +64,8 @@
 }
 .pipeline-view .pipeline-build,
 .pipeline-view .pipeline-deploy {
+  height: 115px;
   border-top: 5px solid;
-  height: 100%;
 }
 .pipeline-view .pipeline-build.SUCCESS,
 .pipeline-view .pipeline-deploy.SUCCESS {
@@ -80,13 +79,11 @@
 .pipeline-view .pipeline-deploy.FAILURE {
   background-color: #fff0f0;
 }
-.pipeline-view .pipeline-build:first-child > .pipeline-deploy-box,
-.pipeline-view .pipeline-deploy:first-child > .pipeline-deploy-box {
-  border-left: 1px solid #e9e8e8;
-}
 .pipeline-view .pipeline-build > .pipeline-deploy-box,
 .pipeline-view .pipeline-deploy > .pipeline-deploy-box {
-  border-right: 1px solid #e9e8e8;
+  height: 100%;
+  min-width: 150px;
+  border-right: 1px solid #bbbbbb;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 22px;
@@ -94,21 +91,15 @@
   margin: 0;
   color: black;
 }
-.pipeline-view .pipeline-build.pipeline-end,
-.pipeline-view .pipeline-deploy.pipeline-end {
-  margin-left: -3px;
+.pipeline-view .pipeline-build.pipeline-start,
+.pipeline-view .pipeline-deploy.pipeline-start {
+  vertical-align: top;
 }
-.pipeline-view .pipeline-build.pipeline-end .pipeline-result,
-.pipeline-view .pipeline-deploy.pipeline-end .pipeline-result {
-  height: 2.45em;
-}
-.pipeline-view .widget-body > .pipeline-panel,
-.pipeline-view .widget-body > .pipeline-panel > *,
-.pipeline-view .widget-body > .pipeline-panel > * > *,
-.pipeline-view .widget-body > .pipeline-panel > * > * > *,
-.pipeline-view .widget-body > .pipeline-panel > * > * > * > * {
-  height: 100%;
-  vertical-align: middle;
+.pipeline-view .pipeline-build .pipeline-summary,
+.pipeline-view .pipeline-deploy .pipeline-summary,
+.pipeline-view .pipeline-build .stage-name,
+.pipeline-view .pipeline-deploy .stage-name {
+  font-weight: 600;
 }
 .pipeline-view .pipeline-block {
   width: 100%;
@@ -131,7 +122,7 @@
 .pipeline-view .pipeline-build a {
   color: black;
 }
-.pipeline-view .pipeline-deploy a {
+.pipeline-view .pipeline-deploy:not(.pipeline-start) a {
   color: black;
 }
 .pipeline-view .green {
