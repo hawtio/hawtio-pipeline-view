@@ -78,7 +78,10 @@ module HawtioPipelineView {
         }
 
         $scope.lastStage = (build):any => {
-          if (build && build.stages && build.stages.length) {
+          if (!build) {
+            return {};
+          }
+          if (build.stages && build.stages.length) {
             return _.last(build.stages);
           }
           // cater for no build stages
