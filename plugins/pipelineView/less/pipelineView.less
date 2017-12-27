@@ -1,10 +1,10 @@
+.inline-block {
+  display: inline-block;
+}
 
 .pipeline-panel {
+  margin: 0;
   padding: 0;
-  .row, .col-md-12 {
-    margin: 0;
-    padding: 0;
-  }
   .build-links {
     .line-spacer {
       margin-left: 1.5em;
@@ -51,7 +51,7 @@
 
 .pipeline-view {
 
-  @pipeline-block-border: #e9e8e8;
+  @pipeline-block-border: #bbbbbb;
 
   .pipeline-build-block {
     background-color: rgb(238, 238, 238);
@@ -80,7 +80,9 @@
 
   .pipeline-build,
   .pipeline-deploy {
-    
+
+    height: 115px;
+
     &.SUCCESS {
       background-color: #e4f1e2;
     }
@@ -94,12 +96,10 @@
     }
 
     border-top: 5px solid;
-    height: 100%;
 
-    &:first-child > .pipeline-deploy-box {
-      border-left: 1px solid @pipeline-block-border;
-    }
     & > .pipeline-deploy-box {
+      height: 100%;
+      min-width: 150px;
       border-right: 1px solid @pipeline-block-border;
       padding-left: 10px;
       padding-right: 10px;
@@ -108,22 +108,12 @@
       margin: 0;
       color: black;
     }
-    &.pipeline-end {
-      margin-left: -3px;
-      .pipeline-result {
-        height: 2.45em;
-      }
-
+    &.pipeline-start {
+      vertical-align: top;
     }
-  }
-
-  .widget-body > .pipeline-panel,
-  .widget-body > .pipeline-panel > *,
-  .widget-body > .pipeline-panel > * > *,
-  .widget-body > .pipeline-panel > * > *  > *,
-  .widget-body > .pipeline-panel > * > *  > * > * {
-    height: 100%;
-    vertical-align: middle;
+    .pipeline-summary, .stage-name {
+      font-weight: 600;
+    }
   }
 
   .pipeline-block {
@@ -153,7 +143,7 @@
   .pipeline-build a {
     color: black;
   }
-  .pipeline-deploy a {
+  .pipeline-deploy:not(.pipeline-start) a {
     color: black;
   }
 

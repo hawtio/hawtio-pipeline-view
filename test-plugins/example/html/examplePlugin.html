@@ -1,17 +1,11 @@
 <div class="container-fluid" ng-controller="PipelineExample.Controller">
-
-  <style>
-  .inline-block {
-    display: inline-block;
-  }
-  </style>
-
-  <div ng-repeat="build in builds">
-    <div class="row">
-      <div class="col-md-12">
-        <hawtio-pipeline-view></hawtio-pipeline-view>
-      </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>
+        <div ng-repeat="build in builds">
+          <hawtio-pipeline-view></hawtio-pipeline-view>
+        </div>
+      </p>
     </div>
   </div>
-
 </div>
